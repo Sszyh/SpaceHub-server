@@ -9,6 +9,17 @@ app.use(cors());
 app.use(express.json());
 app.use(morgan('dev'));
 
+
+// Separated Routes for each Resource
+const propertiesRouter = require('./routes/properties');
+
+
+// Mount all resource routes
+app.use('/properties', propertiesRouter);
+
+
+
+
 app.get('/message', (req, res) => {
   res.json({ message: "Hello from server!" });
 });
