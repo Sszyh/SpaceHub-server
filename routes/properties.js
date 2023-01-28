@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const db = require('../db/connection');
+const propertyQueries = require('../db/queries/propertyQueries');
 
 router.get('/',(req, res) => {
   const query = `
@@ -18,5 +19,15 @@ router.get('/',(req, res) => {
     .json({ error: err.message });
   });
 });
+
+router.get('/:id',(req,res)=>{
+
+  propertyQueries
+  .getPropertyById(req.params.id)
+  .then((property)=>{
+    res.json({property})
+  })
+  
+})
 
 module.exports = router;
