@@ -4,7 +4,7 @@ const db = require('../db/connection');
 router.get('/',(req, res) => {
   const query = `
   SELECT * from properties
-  LIMIT 1
+  
   ;
   `;
   db.query(query)
