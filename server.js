@@ -12,11 +12,11 @@ app.use(morgan('dev'));
 
 // Separated Routes for each Resource
 const propertiesRouter = require('./routes/properties');
-
+const searchRouter = require('./routes/search')
 
 // Mount all resource routes
 app.use('/properties', propertiesRouter);
-
+app.use('/search',searchRouter)
 
 
 
