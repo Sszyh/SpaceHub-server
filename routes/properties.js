@@ -5,7 +5,6 @@ const propertyQueries = require('../db/queries/propertyQueries');
 router.get('/',(req, res) => {
   const query = `
   SELECT * from properties
-  LIMIT 1
   ;
   `;
   db.query(query)
