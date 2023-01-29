@@ -38,6 +38,9 @@ CREATE TABLE properties (
   wheelchair BOOLEAN DEFAULT FALSE,
   wifi BOOLEAN DEFAULT FALSE,
 
+  desc_short TEXT,
+  desc_long TEXT,
+
   created_at TIMESTAMP NOT NULL,
   updated_at TIMESTAMP NOT NULL
 );
