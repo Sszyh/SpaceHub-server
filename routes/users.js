@@ -3,7 +3,7 @@ const router = require("express").Router();
 const db = require('../db/connection');
 const bcrypt = require("bcrypt");
 const userQueries = require('../db/queries/userQueries');
-const getUserQueries = require('../db/queries/getUserQueries')
+const getUserQueries = require('../db/queries/getUserQueries');
 
 const login = function (email, password) {
   return getUserQueries.getUserWithEmail(email)
@@ -19,8 +19,6 @@ exports.login = login;
 // Login
 router.post('/login', (req, res) => {
   const { email, password } = req.body;
-  console.log(email,"em");
-  console.log(password,"pass");
   login(email, password)
     .then(user => {
       if (!user) {
@@ -28,7 +26,7 @@ router.post('/login', (req, res) => {
         return;
       }
       req.session.userId = user.id;
-      res.send({ user: { name: user.name, email: user.email } });
+      res.send({ user: { first_name: user.first_name, email: user.email } });
     })
     .catch(e => res.send(e));
 });
@@ -36,6 +34,7 @@ router.post('/login', (req, res) => {
 
 // Create a new user
 router.post("/register", (req, res) => {
+  // it should check if user already in the database (later)
 
   const user = req.body;
   user.password = bcrypt.hashSync(user.password, 12);
@@ -45,7 +44,7 @@ router.post("/register", (req, res) => {
         res.send({ error: "error" });
         return;
       }
-      // req.session.userId = user.id;
+      req.session.userId = user.id;
       res.send("registered");
     })
     .catch(e => res.send(e.message));
