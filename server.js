@@ -13,11 +13,12 @@ app.use(morgan('dev'));
 // Separated Routes for each Resource
 const propertiesRouter = require('./routes/properties');
 const searchRouter = require('./routes/search')
+const userRouter = require('./routes/booking')
 
 // Mount all resource routes
 app.use('/properties', propertiesRouter);
 app.use('/search',searchRouter)
-
+app.use('/user',userRouter)
 
 
 app.get('/message', (req, res) => {
