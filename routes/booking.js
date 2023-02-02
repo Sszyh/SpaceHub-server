@@ -21,7 +21,7 @@ router.get('/',(req, res) => {
 
 router.get('/:id',(req,res)=>{
     bookingQueries
-    .getUserById(req.params.id)
+    .getBookingByUserId(req.params.id)
     .then((user)=>{
         res.json({user})
     })
