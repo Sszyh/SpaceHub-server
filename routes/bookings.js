@@ -3,15 +3,12 @@ const bookingQueries = require("../db/queries/bookingQueries");
 
 router.post('/', (req, res) => {
   const bookingDetail = req.body;
-  console.log(bookingDetail,"de")
   bookingQueries.bookings(bookingDetail)
     .then(booking => {
       if (!booking) {
-        console.log("aaaa")
         res.send({ error: "error" })
         return;
       }
-      console.log("bbb")
       res.send({
         booking: {
           user_id: booking.user_id,
