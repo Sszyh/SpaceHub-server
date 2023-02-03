@@ -26,7 +26,14 @@ router.post('/login', (req, res) => {
         return;
       }
       req.session.userId = user.id;
-      res.send({ user: { first_name: user.first_name, email: user.email } });
+      res.send({ user: { 
+        first_name: user.first_name, 
+        last_name: user.last_name, 
+        email: user.email, 
+        id: user.id, 
+        user_type: user.user_type,
+        phone_number: user.phone_number
+      } });
     })
     .catch(e => res.send(e));
 });
