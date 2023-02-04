@@ -20,6 +20,7 @@ const propertiesRouter = require('./routes/properties');
 const searchRouter = require('./routes/search')
 const userRouter = require('./routes/booking')
 const hostRouter = require('./routes/host')
+
 // Mount all resource routes
 app.use('/properties', propertiesRouter);
 app.use('/search',searchRouter)
@@ -29,8 +30,8 @@ const usersRouter = require('./routes/users')
 const bookRouter = require('./routes/bookings');
 
 // Mount all resource routes
-app.use('/properties', propertiesRouter);
-app.use('/search',searchRouter);
+// app.use('/properties', propertiesRouter);
+// app.use('/search',searchRouter);
 app.use('/users', usersRouter);
 app.use('/bookings',bookRouter)
 

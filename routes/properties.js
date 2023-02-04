@@ -20,10 +20,11 @@ router.get('/',(req, res) => {
 });
 
 router.get('/:id',(req,res)=>{
-
+  console.log(req.params.id,"iiiiiiiiii");
   propertyQueries
   .getPropertyById(req.params.id)
   .then((property)=>{
+    console.log(property,"pro from back")
     res.json({property})
   })
   
