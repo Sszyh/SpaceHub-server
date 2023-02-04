@@ -18,14 +18,14 @@ app.use(cookieSession({
 // Separated Routes for each Resource
 const propertiesRouter = require('./routes/properties');
 const searchRouter = require('./routes/search');
-// const loginRouter = require('./routes/login');
 const usersRouter = require('./routes/users')
+const bookRouter = require('./routes/bookings');
 
 // Mount all resource routes
 app.use('/properties', propertiesRouter);
 app.use('/search',searchRouter);
-// app.use('/login', loginRouter);
 app.use('/users', usersRouter);
+app.use('/bookings',bookRouter)
 
 
 
