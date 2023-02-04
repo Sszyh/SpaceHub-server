@@ -25,7 +25,6 @@ app.use('/properties', propertiesRouter);
 app.use('/search',searchRouter)
 app.use('/user',userRouter)
 app.use('/host',hostRouter)
-const searchRouter = require('./routes/search');
 const usersRouter = require('./routes/users')
 const bookRouter = require('./routes/bookings');
 
