@@ -25,24 +25,24 @@ CREATE TABLE properties (
   country VARCHAR(255) NOT NULL,
   street VARCHAR(255) NOT NULL,
   city VARCHAR(255) NOT NULL,
-  province VARCHAR(255) NOT NULL,
-  post_code VARCHAR(255) NOT NULL,
+  province VARCHAR(255) ,
+  post_code VARCHAR(255) ,
 
-  coord_long TEXT NOT NULL,
-  coord_lat TEXT NOT NULL,
+  coord_long TEXT,
+  coord_lat TEXT,
    
   price_per_day MONEY NOT NULL,
   average_rating NUMERIC(2,1) DEFAULT 0.0,
 
-  category TEXT NOT NULL,
+  category TEXT,
   wheelchair BOOLEAN DEFAULT FALSE,
   wifi BOOLEAN DEFAULT FALSE,
 
   desc_short TEXT,
   desc_long TEXT,
 
-  created_at TIMESTAMP NOT NULL,
-  updated_at TIMESTAMP NOT NULL
+  created_at TIMESTAMP ,
+  updated_at TIMESTAMP 
 );
 
 CREATE TABLE bookings (

@@ -10,5 +10,15 @@ router.get('/:id',(req,res)=>{
     })
 
 })
+router.post('/:id',(req,res)=>{
+    const data = req.body;
+    console.log("post")
+
+    res.json({
+        message: 'Data received successfully',
+        data: data
+      });
+
+})
 
 module.exports = router;
