@@ -6,6 +6,7 @@ router.post('/', (req, res) => {
   bookingQueries.bookings(bookingDetail)
     .then(booking => {
       if (!booking) {
+        console.log("loginnnnnnn")
         res.send({ error: "error" })
         return;
       }
