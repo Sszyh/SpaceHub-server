@@ -2,7 +2,7 @@ const db = require('../connection');
 
 const getHostById = (id) =>{
     return db.query(`
-    SELECT * 
+    SELECT *, properties.id as property_id
     FROM properties
     JOIN users
     ON users.id = properties.user_id
