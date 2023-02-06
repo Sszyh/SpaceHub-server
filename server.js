@@ -17,24 +17,19 @@ app.use(cookieSession({
 
 // Separated Routes for each Resource
 const propertiesRouter = require('./routes/properties');
-const searchRouter = require('./routes/search')
-const userRouter = require('./routes/bookingHistoryForUsers')
-const hostRouter = require('./routes/host')
-
-// Mount all resource routes
-app.use('/properties', propertiesRouter);
-app.use('/search',searchRouter)
-app.use('/user',userRouter)
-app.use('/host',hostRouter)
-const usersRouter = require('./routes/users')
+const searchRouter = require('./routes/search');
+const userProfileRouter = require('./routes/bookingHistoryForUsers');
+const hostRouter = require('./routes/host');
+const usersSigninRouter = require('./routes/users');
 const bookRouter = require('./routes/bookings');
 
 // Mount all resource routes
-// app.use('/properties', propertiesRouter);
-// app.use('/search',searchRouter);
-app.use('/users', usersRouter);
-app.use('/bookings',bookRouter)
-
+app.use('/properties', propertiesRouter);
+app.use('/search',searchRouter);
+app.use('/user',userProfileRouter);
+app.use('/host',hostRouter);
+app.use('/users', usersSigninRouter);
+app.use('/bookings',bookRouter);
 
 
 app.get('/message', (req, res) => {

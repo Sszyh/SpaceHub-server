@@ -23,6 +23,7 @@ router.get('/:id',(req,res)=>{
     bookingQueries
     .getBookingByUserId(req.params.id)
     .then((user)=>{
+      // console.log(user,"usersss")
         res.json({user})
     })
 
