@@ -34,6 +34,16 @@ const getBookingByHostId = (id) =>{
 
 
 const bookings = (bookingDetail) => {
+
+  const formatDate = (date) => {
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+    return month + "-" + day + "-" + year;
+  }
+  
+  console.log(formatDate(new Date()),"formant");
+
   let queryString = `
  
   INSERT INTO bookings (
@@ -55,8 +65,8 @@ const bookings = (bookingDetail) => {
     `${bookingDetail.check_out_date}`,
     `${bookingDetail.price_per_day}`,
     `${bookingDetail.price_for_stay}`,
-    `${bookingDetail.created_at}`,
-    `${bookingDetail.updated_at}`
+    `${bookingDetail.created_at ?? formatDate(new Date())}`,
+    `${bookingDetail.updated_at ?? formatDate(new Date())}`
   ];
 
   return db
