@@ -2,18 +2,34 @@ const db = require('../connection');
 
 const getBookingByUserId = (id) =>{
     return db.query(`
-    SELECT properties.title, properties.image_url, properties.desc_long, bookings.price_for_stay, bookings.price_per_day,bookings.check_in_date, bookings.check_out_date
-    FROM bookings
-    FULL OUTER JOIN properties
-    ON bookings.property_id = properties.id
+    SELECT * 
+    FROM properties
+    JOIN (SELECT * FROM bookings
+          WHERE bookings.user_id=$1) SUB
+    ON SUB.property_id = properties.id
 
-
-    WHERE bookings.user_id=$1
     `,[id])
     .then((data)=>{
         console.log(data.rows.length)
         return data.rows
     })
+}
+
+const getBookingByHostId = (id) =>{
+  return db.query(`
+  SELECT properties.title, properties.image_url, properties.desc_long,properties.user_id, bookings.price_for_stay, bookings.price_per_day,bookings.check_in_date, bookings.check_out_date, users.*
+  FROM bookings
+  JOIN properties
+  ON bookings.property_id = properties.id
+  JOIN users
+  ON users.id=bookings.user_id
+
+  WHERE properties.user_id=$1
+  `,[id])
+  .then((data)=>{
+      console.log(data.rows.length)
+      return data.rows
+  })
 }
 
 
@@ -54,5 +70,5 @@ const bookings = (bookingDetail) => {
 }
 
 
-module.exports = {getBookingByUserId, bookings};
+module.exports = {getBookingByUserId, bookings,getBookingByHostId};
 

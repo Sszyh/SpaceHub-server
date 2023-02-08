@@ -28,4 +28,14 @@ router.get('/:id',(req,res)=>{
 
 })
 
+
+router.get('/host/:id',(req,res)=>{
+  bookingQueries
+  .getBookingByHostId(req.params.id)
+  .then((host)=>{
+      res.json({host})
+  })
+
+})
+
 module.exports = router;
