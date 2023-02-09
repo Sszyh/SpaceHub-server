@@ -53,7 +53,7 @@ CREATE TABLE bookings (
   check_out_date DATE NOT NULL,
   price_for_stay MONEY NOT NULL,
   price_per_day MONEY NOT NULL,
-  rating INTEGER,
+  rating NUMERIC(2,1),
   created_at TIMESTAMP,
   updated_at TIMESTAMP
 );

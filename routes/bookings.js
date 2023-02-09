@@ -40,10 +40,9 @@ router.put('/',(req,res)=>{
   db.query(query,[newRating.rating,newRating.booking_id])
   .then(query=>{
     res.send({
-      newRating:{
         rating:newRating.rating,
         booking_id:newRating.booking_id
-      }
+      
     })
   })
 })
@@ -53,7 +52,7 @@ router.put('/avg',(req,res)=>{
     UPDATE properties p
     SET average_rating = SUB.avg_rating
     FROM (
-      SELECT property_id, avg(rating) as avg_rating
+      SELECT property_id, round(avg(rating),1) as avg_rating
       FROM bookings
       group by property_id
     ) SUB
