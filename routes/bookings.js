@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const bookingQueries = require("../db/queries/bookingQueries");
+const db = require('../db/connection');
 
 router.post('/', (req, res) => {
   const bookingDetail = req.body;
@@ -26,4 +27,25 @@ router.post('/', (req, res) => {
     .catch(e => res.send(e))
 
 });
+
+router.put('/',(req,res)=>{
+  console.log('update:',req.body);
+  const newRating=req.body;
+  const query = `
+    UPDATE bookings
+    SET rating=$1
+    WHERE property_id=$2
+  `
+  db.query(query,[newRating.rating,newRating.property_id])
+  .then(query=>{
+    res.send({
+      newRating:{
+        rating:newRating.rating,
+        property_id:newRating.property_id
+      }
+    })
+  })
+})
+
+
 module.exports = router;

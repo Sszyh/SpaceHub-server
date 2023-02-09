@@ -80,5 +80,6 @@ const bookings = (bookingDetail) => {
 }
 
 
+
 module.exports = {getBookingByUserId, bookings,getBookingByHostId};
 
