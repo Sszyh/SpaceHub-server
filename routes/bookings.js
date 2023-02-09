@@ -30,21 +30,37 @@ router.post('/', (req, res) => {
 
 router.put('/',(req,res)=>{
   console.log('update:',req.body);
+
   const newRating=req.body;
   const query = `
     UPDATE bookings
     SET rating=$1
-    WHERE property_id=$2
+    WHERE id=$2
   `
-  db.query(query,[newRating.rating,newRating.property_id])
+  db.query(query,[newRating.rating,newRating.booking_id])
   .then(query=>{
     res.send({
       newRating:{
         rating:newRating.rating,
-        property_id:newRating.property_id
+        booking_id:newRating.booking_id
       }
     })
   })
+})
+
+router.put('/avg',(req,res)=>{
+  const query = `
+    UPDATE properties p
+    SET average_rating = SUB.avg_rating
+    FROM (
+      SELECT property_id, avg(rating) as avg_rating
+      FROM bookings
+      group by property_id
+    ) SUB
+    WHERE SUB.property_id = p.id
+  `
+  db.query(query)
+
 })
 
 
