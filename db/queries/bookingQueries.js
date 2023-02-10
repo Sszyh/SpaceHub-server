@@ -17,7 +17,7 @@ const getBookingByUserId = (id) =>{
 
 const getBookingByHostId = (id) =>{
   return db.query(`
-  SELECT properties.title, properties.image_url, properties.desc_long,properties.user_id, bookings.price_for_stay, bookings.price_per_day,bookings.check_in_date, bookings.check_out_date, users.*
+  SELECT properties.title, properties.image_url, properties.desc_long,properties.user_id,bookings.rating, bookings.price_for_stay, bookings.price_per_day,bookings.check_in_date, bookings.check_out_date, users.*
   FROM bookings
   JOIN properties
   ON bookings.property_id = properties.id
