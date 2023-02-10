@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const bookingQueries = require("../db/queries/bookingQueries");
+const db = require('../db/connection');
 
 router.post('/', (req, res) => {
   const bookingDetail = req.body;
@@ -26,4 +27,40 @@ router.post('/', (req, res) => {
     .catch(e => res.send(e))
 
 });
+
+router.put('/',(req,res)=>{
+  console.log('update:',req.body);
+
+  const newRating=req.body;
+  const query = `
+    UPDATE bookings
+    SET rating=$1
+    WHERE id=$2
+  `
+  db.query(query,[newRating.rating,newRating.booking_id])
+  .then(query=>{
+    res.send({
+        rating:newRating.rating,
+        booking_id:newRating.booking_id
+      
+    })
+  })
+})
+
+router.put('/avg',(req,res)=>{
+  const query = `
+    UPDATE properties p
+    SET average_rating = SUB.avg_rating
+    FROM (
+      SELECT property_id, round(avg(rating),1) as avg_rating
+      FROM bookings
+      group by property_id
+    ) SUB
+    WHERE SUB.property_id = p.id
+  `
+  db.query(query)
+
+})
+
+
 module.exports = router;
