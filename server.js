@@ -17,25 +17,21 @@ app.use(cookieSession({
 
 // Separated Routes for each Resource
 const propertiesRouter = require('./routes/properties');
-const searchRouter = require('./routes/search')
-const userRouter = require('./routes/bookingHistoryForUsers')
-const hostRouter = require('./routes/host')
+const searchRouter = require('./routes/search');
+const userRouter = require('./routes/bookingHistoryForUsers');
+const hostRouter = require('./routes/host');
+const usersRouter = require('./routes/users');
+const bookRouter = require('./routes/bookings');
+const calenderAPIRouter = require('./routes/calenderAPI')
 
 // Mount all resource routes
 app.use('/properties', propertiesRouter);
 app.use('/search',searchRouter)
 app.use('/user',userRouter)
 app.use('/host',hostRouter)
-const usersRouter = require('./routes/users')
-const bookRouter = require('./routes/bookings');
-
-// Mount all resource routes
-// app.use('/properties', propertiesRouter);
-// app.use('/search',searchRouter);
 app.use('/users', usersRouter);
-app.use('/bookings',bookRouter)
-
-
+app.use('/bookings',bookRouter);
+app.use('/calender',calenderAPIRouter);
 
 app.get('/message', (req, res) => {
   res.json({ message: "Hello from server!" });
