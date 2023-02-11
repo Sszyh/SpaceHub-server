@@ -1,38 +1,38 @@
 const db = require('../connection');
 
-// const getBookingByUserId = (id) =>{
-//     return db.query(`
-//     SELECT * 
-//     FROM properties
-//     JOIN (SELECT * FROM bookings
-//           WHERE bookings.user_id=$1) SUB
-//     ON SUB.property_id = properties.id
-
-//     `,[id])
-//     .then((data)=>{
-//         console.log(data.rows.length)
-//         return data.rows
-//     })
-// }
-
 const getBookingByUserId = (id) =>{
-  return db.query(`
-  SELECT properties.title, properties.image_url, properties.desc_long,properties.user_id, bookings.price_for_stay, bookings.price_per_day,bookings.check_in_date, bookings.check_out_date, users.*
-  FROM properties
-  JOIN bookings
-  ON bookings.property_id = properties.id
-  JOIN users
-  ON users.id=bookings.user_id
-
-  WHERE bookings.user_id=$1
-  ORDER BY bookings.created_at DESC
-
-  `,[id])
-  .then((data)=>{
-      console.log(data.rows.length)
-      return data.rows
-  })
+    return db.query(`
+    SELECT * 
+    FROM properties
+    JOIN (SELECT * FROM bookings
+          WHERE bookings.user_id=$1) SUB
+    ON SUB.property_id = properties.id
+    ORDER BY SUB.created_at DESC
+    `,[id])
+    .then((data)=>{
+        console.log(data.rows.length)
+        return data.rows
+    })
 }
+
+// const getBookingByUserId = (id) =>{
+//   return db.query(`
+//   SELECT properties.title, properties.image_url, properties.desc_long,properties.user_id, bookings.price_for_stay, bookings.price_per_day,bookings.check_in_date, bookings.check_out_date, bookings.rating,users.*
+//   FROM properties
+//   JOIN bookings
+//   ON bookings.property_id = properties.id
+//   JOIN users
+//   ON users.id=bookings.user_id
+
+//   WHERE bookings.user_id=$1
+//   ORDER BY bookings.created_at DESC
+
+//   `,[id])
+//   .then((data)=>{
+//       console.log(data.rows.length)
+//       return data.rows
+//   })
+// }
 
 const getBookingByHostId = (id) =>{
   return db.query(`
