@@ -61,6 +61,8 @@ const bookings = (bookingDetail) => {
     const day = date.getDate();
     return month + "-" + day + "-" + year;
   }
+
+  const { user_id, property_id, check_in_date, check_out_date, price_per_day, price_for_stay, created_at, updated_at } = bookingDetail; 
   
   console.log(formatDate(new Date()),"formant");
 
@@ -78,15 +80,15 @@ const bookings = (bookingDetail) => {
   VALUES ($1,$2,$3,$4,$5,$6,$7,$8)
   RETURNING *;
   `;
-  let values = [
-    `${bookingDetail.user_id}`,
-    `${bookingDetail.property_id}`,
-    `${bookingDetail.check_in_date}`,
-    `${bookingDetail.check_out_date}`,
-    `${bookingDetail.price_per_day}`,
-    `${bookingDetail.price_for_stay}`,
-    `${bookingDetail.created_at ?? formatDate(new Date())}`,
-    `${bookingDetail.updated_at ?? formatDate(new Date())}`
+  const values = [
+    `${user_id}`,
+    `${property_id}`,
+    `${check_in_date}`,
+    `${check_out_date}`,
+    `${price_per_day}`,
+    `${price_for_stay}`,
+    `${created_at ?? formatDate(new Date())}`,
+    `${updated_at ?? formatDate(new Date())}`
   ];
 
   return db

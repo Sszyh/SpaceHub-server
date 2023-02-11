@@ -3,10 +3,7 @@ const db = require('../db/connection');
 const bookingQueries = require('../db/queries/bookingQueries');
 
 router.get('/',(req, res) => {
-    const query = `
-    SELECT * from bookings
-    ;
-    `;
+    const query = `SELECT * from bookings;`;
     db.query(query)
     .then(data => {
       const user = data.rows;
@@ -20,8 +17,11 @@ router.get('/',(req, res) => {
   });
 
 router.get('/:id',(req,res)=>{
+  const {id} = req.params;
+  // validate id before query
+
     bookingQueries
-    .getBookingByUserId(req.params.id)
+    .getBookingByUserId(id)
     .then((user)=>{
         res.json({user})
     })
@@ -30,8 +30,11 @@ router.get('/:id',(req,res)=>{
 
 
 router.get('/host/:id',(req,res)=>{
+  const {id} = req.params;
+  // validate id before query
+
   bookingQueries
-  .getBookingByHostId(req.params.id)
+  .getBookingByHostId(id)
   .then((host)=>{
       res.json({host})
   })
