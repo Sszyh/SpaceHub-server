@@ -37,7 +37,7 @@ const newProperty = (property) => {
       `${property.country}`,
       `${property.street}`,
       `${property.city}`,
-      `${property.price_per_day||0}`,
+      `${property.price||0}`,
       `${property.desc_short}`,
       `${property.user_id}`
     ];

@@ -15,6 +15,7 @@ router.post('/:id',(req,res)=>{
     console.log(newPropertyInfo);
     hostQueries.newProperty(newPropertyInfo)
     .then(property =>{
+        console.log('property',property)
         if(!property){
             res.send({error:"error"})
             return;
@@ -27,7 +28,7 @@ router.post('/:id',(req,res)=>{
                 country: property.country,
                 street: property.street,
                 city: property.city,
-                price_per_day: property.price_per_day,
+                price_per_day: property.price,
                 desc_short: property.desc_short
             }
         })
