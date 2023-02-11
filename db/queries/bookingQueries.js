@@ -7,7 +7,7 @@ const getBookingByUserId = (id) =>{
     JOIN (SELECT * FROM bookings
           WHERE bookings.user_id=$1) SUB
     ON SUB.property_id = properties.id
-    ORDER BY SUB.created_at DESC
+    ORDER BY SUB.check_in_date
     `,[id])
     .then((data)=>{
         console.log(data.rows.length)
