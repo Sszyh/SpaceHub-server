@@ -10,8 +10,8 @@ CREATE TABLE users (
   email VARCHAR(255),
   password TEXT NOT NULL,
   user_type TEXT NOT NULL,
-  first_name VARCHAR(255) NOT NULL,
-  last_name VARCHAR(255) NOT NULL,
+  first_name VARCHAR(30) NOT NULL,
+  last_name VARCHAR(30) NOT NULL,
   created_at timestamp NOT NULL,
   phone_number VARCHAR(13) NOT NULL
 );
