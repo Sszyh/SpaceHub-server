@@ -34,13 +34,13 @@ router.put('/',(req,res)=>{
   console.log('update:',req.body);
   const newData=req.body;
   const query = `UPDATE properties SET title = $1, desc_short = $2, price_per_day =$3 WHERE id = $4`;
-  db.query(query, [newData.title, newData.desc_short, newData.price||1, newData.proprety_id])
+  db.query(query, [newData.title, newData.desc_short, newData.price||1, newData.property_id])
     .then(property => {
       if(!property){
         res.send({error:"error"})
         return;
       }
-      console.log('test_res',res)
+      // console.log('test_res',res)
       res.send({
         property:{
           title:newData.title,
