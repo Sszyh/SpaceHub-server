@@ -54,6 +54,7 @@ CREATE TABLE bookings (
   price_for_stay MONEY NOT NULL,
   price_per_day MONEY NOT NULL,
   rating NUMERIC(2,1),
+  review_message TEXT,
   created_at TIMESTAMP,
   updated_at TIMESTAMP
 );

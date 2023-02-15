@@ -35,10 +35,11 @@ router.put('/',(req,res)=>{
   const newRating=req.body;
   const query = `
     UPDATE bookings
-    SET rating=$1
-    WHERE id=$2
+    SET rating=$1,
+    review_message=$2
+    WHERE id=$3
   `
-  db.query(query,[newRating.rating,newRating.booking_id])
+  db.query(query,[newRating.rating, newRating.review_message, newRating.booking_id])
   .then(query=>{
     return res.send({ ...newRating })
   })
