@@ -33,9 +33,9 @@ This project is created for the business rental.
 
 ## Views
 * Guest user
-![Guest-user view](images/guest-user.gif)
+![Guest-user view](./images/guest-user.gif)
 * Host user
-![Host-user view](images/host-user.gif)
+![Host-user view](./images/host-user.gif)
 
 ## Collaboration Tools
 * [Drawio for database design and ERD](https://app.diagrams.net/#G1a1nLiBFVCd4Vk4iwxanUlc7MJIss7tWJ)
