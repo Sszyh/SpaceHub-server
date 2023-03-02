@@ -1,8 +1,13 @@
 # SpaceHub
-This Final project built by [Ian Dodds](https://github.com/imdodds), [Sarah Zhu](https://github.com/Sszyh) and [Zhaoran Xin](). 
+This project was built by [Ian Dodds](https://github.com/imdodds), [Sarah Zhu](https://github.com/Sszyh) and [Zhaoran Xin](https://github.com/Ruanruanx). 
+
+This project is created for the business rental. 
+* A guest user, can see all the list of properties, search by their reference, make instant book, rate experience, leave reviews and see all the booking history. 
+* A host user can post new properties, edit properties, see all their properties' booking history.
 
 ## Getting Started 
-*Git clone the repo onto your local machine.*
+*Git clone the repo onto your local machine. Also git clone the [client Repo](https://github.com/Sszyh/SpaceHub-client)*
+
 
 1. Create the `.env` file by using `env.example` as a reference.
 2. Update the `.env` file with local database.
@@ -12,11 +17,11 @@ This Final project built by [Ian Dodds](https://github.com/imdodds), [Sarah Zhu]
    
 
 
-
 ## User Stories (Project goals)
 ### As a guest user
 * A guest user can see a list of available properties
-* A guest user can see a map with available properties
+* A guest user can search properties by their refenrence
+* A guest user can choose available properties on the map
 * A guest user can “Instant Book” a space for rent
 * A guest user can see a list of spaces that they have booked
 * A guest user can leave a rating/review of a property they have rented
@@ -28,7 +33,9 @@ This Final project built by [Ian Dodds](https://github.com/imdodds), [Sarah Zhu]
 
 ## Views
 * Guest user
+![Guest user view](images/guest-user.gif)
 * Host user
+![Host user view](images/host-user.gif)
 
 ## Collaboration Tools
 * [Drawio for database design and ERD](https://app.diagrams.net/#G1a1nLiBFVCd4Vk4iwxanUlc7MJIss7tWJ)
@@ -42,3 +49,6 @@ This Final project built by [Ian Dodds](https://github.com/imdodds), [Sarah Zhu]
 - body-parser
 - dotenv
 - cors
+- axios
+- bcrypt
+- cookie-session
